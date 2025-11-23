@@ -1,19 +1,26 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerCombat : MonoBehaviour
 {
     public PlayerInputActions playerCombat;
-    public Animator animator;
+
+    [Header("HP")]
+    public float hp;
+    public float maxHp;
+    [SerializeField]private HealthBarUI healthBarUI;
 
     [Header("Attack")]
     public float damage;
     private InputAction atk;
+    public Animator atkAnimator;
 
     [Header("Defense")]
     public float defense;
     private InputAction def;
+    public Animator defAnimator;
 
     private void Awake()
     {
@@ -37,19 +44,29 @@ public class PlayerCombat : MonoBehaviour
         def.Disable();
     }
 
-    void Update()
+    private void Start()
     {
+        healthBarUI.SetMaxHealth(maxHp);
+    }
 
+    public void SetHealth(float healthChange)
+    {
+        hp += healthChange;
+        hp = Mathf.Clamp(hp, 0, maxHp);
+
+        healthBarUI.SetHealth(hp);
     }
 
     void Attack(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("isAttacking");
+        atkAnimator.SetTrigger("isAttacking");
+        SetHealth(-20f);
         Debug.Log("Attack test");
     }
 
     private void Defense(InputAction.CallbackContext context)
     {
+        defAnimator.SetTrigger("isDefending");
         Debug.Log("Defense test");
     }
 }
