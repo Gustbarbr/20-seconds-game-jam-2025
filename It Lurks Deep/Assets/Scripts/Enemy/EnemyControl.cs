@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyControl : MonoBehaviour
 {
     public float hp;
+    public float damage;
+    public float defense;
     public PlayerCombat player;
 
     void Start()

@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 317331471}
   - component: {fileID: 317331476}
   - component: {fileID: 317331477}
+  - component: {fileID: 317331479}
   - component: {fileID: 317331478}
   m_Layer: 0
   m_Name: Player
@@ -427,11 +428,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc2b3be12bee524794948ce45695c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  boon: {fileID: 317331479}
   hp: 50
   maxHp: 50
   healthBarUI: {fileID: 1393854791}
   damage: 5
   atkAnimator: {fileID: 163783271}
+  critRate: 0
+  critDamage: 0
   defense: 0
   defAnimator: {fileID: 2107734572}
 --- !u!114 &317331478
@@ -464,6 +468,20 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &317331479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317331470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2c1cf2a969ed84fab61500639d1575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoonsControl
+  playerCombat: {fileID: 317331477}
+  enemyControl: {fileID: 709191665}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1025,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyControl
   hp: 50
+  damage: 15
+  defense: 5
   player: {fileID: 317331477}
 --- !u!1 &786145500
 GameObject:

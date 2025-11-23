@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class PlayerCombat : MonoBehaviour
 {
     public PlayerInputActions playerCombat;
+    public BoonsControl boon;
 
     [Header("HP")]
     public float hp;
@@ -16,6 +16,8 @@ public class PlayerCombat : MonoBehaviour
     public float damage;
     private InputAction atk;
     public Animator atkAnimator;
+    public float critRate;
+    public float critDamage;
 
     [Header("Defense")]
     public float defense;
@@ -60,13 +62,19 @@ public class PlayerCombat : MonoBehaviour
     void Attack(InputAction.CallbackContext context)
     {
         atkAnimator.SetTrigger("isAttacking");
-        SetHealth(-20f);
-        Debug.Log("Attack test");
+        bool isCrit = UnityEngine.Random.value < critRate;
+
+        float finalDamage = damage;
+
+        if (isCrit)
+            finalDamage *= (1f + critDamage);
+
+        SetHealth(-finalDamage);
     }
 
     private void Defense(InputAction.CallbackContext context)
     {
         defAnimator.SetTrigger("isDefending");
-        Debug.Log("Defense test");
+        boon.ChosenBoon();
     }
 }
