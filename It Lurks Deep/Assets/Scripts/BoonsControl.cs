@@ -33,6 +33,8 @@ public class BoonsControl : MonoBehaviour
         boonsList.Add(BoonType.DefDown);
         boonsList.Add(BoonType.CritRateUp);
         boonsList.Add(BoonType.CritDmgUp);
+
+        enemyControl = FindAnyObjectByType<EnemyControl>();
     }
 
     private void Update()

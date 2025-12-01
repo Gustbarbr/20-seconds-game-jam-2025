@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     public PlayerInputActions playerCombat;
-    public BoonsControl boon;
 
     [Header("HP")]
     public float hp;
@@ -18,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     public Animator atkAnimator;
     public float critRate;
     public float critDamage;
+    public bool isCrit;
 
     [Header("Defense")]
     public float defense;
@@ -62,19 +62,12 @@ public class PlayerCombat : MonoBehaviour
     void Attack(InputAction.CallbackContext context)
     {
         atkAnimator.SetTrigger("isAttacking");
-        bool isCrit = UnityEngine.Random.value < critRate;
-
-        float finalDamage = damage;
-
-        if (isCrit)
-            finalDamage *= (1f + critDamage);
-
-        SetHealth(-finalDamage);
+        isCrit = UnityEngine.Random.value < critRate;
+        //SetHealth(damage);
     }
 
     private void Defense(InputAction.CallbackContext context)
     {
         defAnimator.SetTrigger("isDefending");
-        boon.ChosenBoon();
     }
 }
