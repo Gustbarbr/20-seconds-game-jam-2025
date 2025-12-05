@@ -16,6 +16,7 @@ public class SpawnEnemy : MonoBehaviour
         GameObject selectedEnemy = enemiesPrefabs[randomIndex];
 
         Vector3 spawnPos = player.position + player.forward * distanceInFront;
+        spawnPos.y = 2f;
 
         GameObject enemy = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
 

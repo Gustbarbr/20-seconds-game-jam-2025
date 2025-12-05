@@ -63,7 +63,6 @@ public class PlayerCombat : MonoBehaviour
     {
         atkAnimator.SetTrigger("isAttacking");
         isCrit = UnityEngine.Random.value < critRate;
-        //SetHealth(damage);
     }
 
     private void Defense(InputAction.CallbackContext context)
