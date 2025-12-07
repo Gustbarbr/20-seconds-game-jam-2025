@@ -16,6 +16,7 @@ public class EnemyControl : MonoBehaviour
     public SpawnEnemy spawnEnemy;
     public GameObject fireballPrefab;
     public Transform fireballSpawnPos;
+    public ScoreControl scoreControl;
 
     [Header("HitColor")]
     private SpriteRenderer sprite;
@@ -28,6 +29,7 @@ public class EnemyControl : MonoBehaviour
         player = FindAnyObjectByType<PlayerCombat>();
         boon = FindAnyObjectByType<BoonsControl>();
         spawnEnemy = FindAnyObjectByType<SpawnEnemy>();
+        scoreControl = FindAnyObjectByType<ScoreControl>();
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         originalColor = sprite.color;
@@ -39,6 +41,7 @@ public class EnemyControl : MonoBehaviour
         {
             spawnEnemy.Spawn();
             boon.ChosenBoon();
+            scoreControl.score += 100;
             Destroy(gameObject);
         }
 
