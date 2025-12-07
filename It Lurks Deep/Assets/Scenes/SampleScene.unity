@@ -431,10 +431,10 @@ MonoBehaviour:
   hp: 50
   maxHp: 50
   healthBarUI: {fileID: 1393854791}
-  damage: 15
+  damage: 35
   atkAnimator: {fileID: 163783271}
-  critRate: 0
-  critDamage: 0
+  critRate: 0.25
+  critDamage: 50
   isCrit: 0
   defense: 0
   defAnimator: {fileID: 2107734572}

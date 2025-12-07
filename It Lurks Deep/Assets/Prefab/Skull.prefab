@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2219069985585650441}
   - component: {fileID: -1293414547928856032}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   spawnEnemy: {fileID: 0}
   fireballPrefab: {fileID: 513979910678145339, guid: 2ba4c5712ff4db745a87b473677c4848, type: 3}
   fireballSpawnPos: {fileID: 6594715813621226173}
+  scoreControl: {fileID: 0}
 --- !u!212 &-1293414547928856032
 SpriteRenderer:
   m_ObjectHideFlags: 0
